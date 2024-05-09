@@ -447,7 +447,7 @@ class NKRecord:
                     vk = VALUE_KEY.parse_stream(substream)
                 except (ConstError, StreamError):
                     logger.error(f'Could not parse VK at {substream.tell()}, registry hive is probably corrupted.')
-                    return
+                    continue
 
                 value = self.read_value(vk, substream)
 
