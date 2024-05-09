@@ -337,7 +337,9 @@ class NKRecord:
         try:
             signature = Bytes(2).parse_stream(self._stream)
         except StreamError as ex:
-            raise RegistryParsingException(f'Bad subkey at offset {target_offset}: {ex}')
+            print(f"Error parsing at: {self}")
+            return
+            #raise RegistryParsingException(f'Bad subkey at offset {target_offset}: {ex}')
 
         # LF,  LH and RI contain subkeys
         if signature in [HASH_LEAF_SIGNATURE, FAST_LEAF_SIGNATURE, LEAF_INDEX_SIGNATURE]:
